@@ -1,0 +1,26 @@
+Table "User" {
+  "UID" NUMBER(3) [pk]
+  "name" VARCHAR(20)
+  "forename" VARCHAR(20)
+  "password" VARCHAR(20)
+  "token" VARCHAR(20)
+  "isAdmin" boolean
+}
+
+Table "Event" {
+  "EID" NUMBER(3) [pk]
+  "name" VARCHAR(20)
+  "priority" NUMBER(1)
+  "isFullDay" boolean
+  "start" datetime
+  "end" datetime
+}
+
+Table "EventList" {
+  "UID" NUMBER(3)
+  "EID" NUMBER(3)
+  "date" date
+}
+
+Ref:"EventList"."UID" < "User"."UID"
+Ref:"EventList"."EID" < "Event"."EID"
